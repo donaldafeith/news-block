@@ -2,9 +2,17 @@
 /**
  * Plugin Name: News Tech Block
  * Description: A Gutenberg block to display tech news.
- * Version: 1.0
- * Author: Your Name
+ * Version: 0.1.0
+ * Author: Donalda Feith
  */
+
+// To define your API key securely, add the following line to your wp-config.php:
+// define( 'NEWS_TECH_BLOCK_API_KEY', 'your-api-key-here' );
+// Remove the fallback below once the constant is defined.
+if ( ! defined( 'NEWS_TECH_BLOCK_API_KEY' ) ) {
+    // Fallback API key for development; remove this in production
+    define( 'NEWS_TECH_BLOCK_API_KEY', 'Get Your Free API Key From https://newsapi.org/' );
+}
 
 function news_tech_block_register_block() {
     wp_register_script(
@@ -31,10 +39,10 @@ function news_tech_block_render( $attributes ) {
     $current_page = isset($_GET['news_page']) ? max(1, intval($_GET['news_page'])) : 1;
     $page_size    = 5; // Limit number of articles per page
 
-    // Build API URL with pagination parameters
+    // Build API URL with pagination parameters and replace literal API key with the constant.
     $api_url = add_query_arg( array(
         'q'        => 'wordpress',
-        'apiKey'   => 'fd39df269143449ab27667795a83d964',
+        'apiKey'   => NEWS_TECH_BLOCK_API_KEY,
         'page'     => $current_page,
         'pageSize' => $page_size
     ), 'https://newsapi.org/v2/everything' );
