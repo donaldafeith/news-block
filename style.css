@@ -1,0 +1,17 @@
+.news-tech-block {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.news-article {
+    margin-bottom: 20px;
+}
+
+.news-article h3 {
+    margin: 0 0 10px;
+}
+
+.news-article p {
+    margin: 0;
+}
